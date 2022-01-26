@@ -1,0 +1,13 @@
+@media print {
+  h3 {
+    color: blue !important;
+  }
+}
+.head {
+  margin: 0px 5px;
+}
+
+.flex {
+  display: flex;
+  border: 1px solid black;
+}
