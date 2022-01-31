@@ -7,6 +7,7 @@
     placeholder="الاسم"
     required
     type="text"
+    value="<%= visit.name %>"
   />
 </div>
 
@@ -17,6 +18,7 @@
     placeholder="رقم الهاتف"
     name="phoneNum1"
     id="name"
+    value="<%= visit.phoneNum1 %>"
     required
   />
   <span class="input-group-text">-</span>
@@ -25,6 +27,7 @@
     placeholder="رقم الارضي"
     name="phoneNum2"
     id="name"
+    value="<%= visit.phoneNum2 %>"
     required
   />
 </div>
@@ -36,6 +39,7 @@
     placeholder="المنطفة"
     id="ragion"
     type="text"
+    value="<%= visit.ragion %>"
     required
   />
   <span class="input-group-text">-</span>
@@ -46,6 +50,7 @@
     id="stname"
     type="text"
     required
+    value="<%= visit.stname %>"
   />
   <span class="input-group-text">-</span>
   <input
@@ -55,6 +60,7 @@
     id="blnum"
     type="text"
     required
+    value="<%= visit.blnum %>"
   />
   <span class="input-group-text">-</span>
   <input
@@ -64,6 +70,7 @@
     id="flnum"
     type="text"
     required
+    value="<%= visit.flnum %>"
   />
   <span class="input-group-text">-</span>
   <input
@@ -73,6 +80,7 @@
     id="donum"
     type="text"
     required
+    value="<%= visit.donum %>"
   />
   <span class="input-group-text">-</span>
   <input
@@ -82,6 +90,7 @@
     id="spchilmark"
     type="text"
     required
+    value="<%= visit.spchilmark %>"
   />
 </div>
 
@@ -94,7 +103,9 @@
     name="tests"
     id="tests"
     required
-  ></textarea>
+  >
+<%= visit.tests %></textarea
+  >
 </div>
 
 <!-- الوقت  -->
@@ -106,9 +117,17 @@
     type="text"
     name="time"
     required
+    value="<%= visit.time %>"
   />
   <span class="input-group-text">-</span>
-  <input class="form-control mp-3" name="date" id="date" type="date" required />
+  <input
+    class="form-control mp-3"
+    name="date"
+    id="date"
+    type="date"
+    required
+    value="<%= visit.date %>"
+  />
   <span class="input-group-text">-</span>
   <input
     class="form-control mp-3"
@@ -117,6 +136,7 @@
     type="text"
     name="creater"
     placeholder="مستقبل الزياره"
+    value="<%= visit.creater %>"
     required
   />
   <input
@@ -124,13 +144,16 @@
     class="form-control"
     name="chimist"
     placeholder="اسم القائم بالزياره"
+    value="<%= visit.chimist %>"
     required
   />
 </div>
 
 <div class="input-group mb-3">
   <span class="input-group-text mb-3">ملاحظات</span>
-  <textarea class="form-control mb-3" name="nots" id="nots" required></textarea>
+  <textarea class="form-control mb-3" name="nots" id="nots" required>
+<%= visit.nots %></textarea
+  >
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text">الاجمالي</span>
@@ -141,6 +164,7 @@
     id="cost"
     type="text"
     required
+    value="<%= visit.cost %>"
   />
 </div>
 <div class="form-check form-check-inline">
@@ -173,7 +197,4 @@
   />
   <label class="form-check-label" for="inlineRadio3">Normal</label>
 </div>
-<div>
-  <a href="/" class="btn btn-secondary mt-4">Back</a>
-  <button type="submit" class="btn btn-success mt-4">Save</button>
-</div>
+<div></div>

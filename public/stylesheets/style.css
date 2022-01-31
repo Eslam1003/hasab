@@ -1,5 +1,5 @@
 .body {
-  background-color: #f0f0f0;
+  background-color: #f0f6fd;
 }
 .header {
   text-align: center;
@@ -25,14 +25,14 @@
 .card-body {
   display: grid !important;
   grid-template-columns: repeat(7, minmax(auto, 1fr)) !important;
-  align-items: center;
-  justify-items: center;
+  align-items: center !important;
+  justify-items: center !important;
   gap: 5px !important;
   padding: 5px !important;
   position: relative;
 }
 .card:hover {
-  background-color: #f0f6fd;
+  background-color: #eee;
 }
 .card-title {
   margin-bottom: 0px !important;

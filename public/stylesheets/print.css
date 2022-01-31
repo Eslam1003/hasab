@@ -1,13 +1,12 @@
-@media print {
-  h3 {
-    color: blue !important;
-  }
+.body {
+  background-color: #f0f6fd;
 }
-.head {
-  margin: 0px 5px;
-}
-
-.flex {
+.visit-row {
   display: flex;
-  border: 1px solid black;
+  align-items: center;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+h3 {
+  width: 200px;
 }
