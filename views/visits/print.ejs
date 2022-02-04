@@ -9,21 +9,24 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"> 
   </head>
   <body class="body">
     <div class="container">
       <div class="visit-row">
-        <h3>الاسم</h3>
+        <h6>الاسم</h6>
         <p><%= visit.name %></p>
       </div>
       <div class="visit-row">
-        <h3>رقم الهاتف</h3>
+        <h6>رقم الهاتف</h6>
         <div>
           <p><%= visit.phoneNum1 %> - <%= visit.phoneNum2 %></p>
         </div>
       </div>
       <div class="visit-row">
-        <h3>العنوان</h3>
+        <h6>العنوان</h6>
         <div>
           <p>المنطقه:<%= visit.ragion %></p>
           <p>اسم الشارع:<%= visit.stname %></p>
@@ -34,34 +37,35 @@
         </div>
       </div>
       <div class="visit-row">
-        <h3>التحاليل</h3>
+        <h6>التحاليل</h6>
         <p><%= visit.tests %></p>
       </div>
       <div class="visit-row">
-        <h3>توقيت الزياره</h3>
+        <h6>توقيت الزياره</h6>
         <p><%= visit.createdAt %></p>
       </div>
       <div class="visit-row">
-        <h3>القيام بالزياره</h3>
-        <p><%= visit.date %> / <%= visit.time %></p>
+        <h6>القيام بالزياره</h6>
+        <p> <h6>الساعة</h6> <%= visit.time %>  <h6>يوم</h6> <%= visit.date %></p>
       </div>
       <div class="visit-row">
-        <h3>متلقي الزياره</h3>
+        <h6>متلقي الزياره</h6>
         <p><%= visit.creater %></p>
       </div>
       <div class="visit-row">
-        <h3>القائم بالزياره</h3>
+        <h6>القائم بالزياره</h6>
         <p><%= visit.chimist %></p>
       </div>
       <div class="visit-row">
-        <h3>ملاحظات</h3>
+        <h6>ملاحظات</h6>
         <p><%= visit.nots %></p>
       </div>
       <div class="visit-row">
-        <h3>التكلفة</h3>
+        <h6>التكلفة</h6>
         <p><%= visit.cost %></p>
       </div>
-
+    </div>
+    <div class="buuton">
       <a href="/visits/edit/<%= visit.id %> " class="btn btn-success">edit</a>
       <a href="/" class="btn btn-success">Home</a>
     </div>

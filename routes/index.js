@@ -1,13 +1,20 @@
-var express = require("express");
-var router = express.Router();
-const controller = require("./../controller/controller");
+var { Router } = require("express");
+var router = Router();
+const {
+  search,
+  visitEdit,
+  newVisit,
+  visitsPrint,
+  visitupdate,
+  visitSave,
+} = require("./../controller/controller");
 
 /* app routes */
-router.get("/", controller.search);
-router.get("/visits/print/:id", controller.visitsPrint);
-router.get("/visits/new", controller.newVisit);
-router.get("/visits/edit/:id", controller.visitEdit);
-router.post("/visits/edit/:id", controller.visitupdate);
-router.post("/", controller.visitSave);
+router.get("/", search);
+router.get("/visits/print/:id", visitsPrint);
+router.get("/visits/new", newVisit);
+router.get("/visits/edit/:id", visitEdit);
+router.post("/visits/edit/:id", visitupdate);
+router.post("/", visitSave);
 
 module.exports = router;

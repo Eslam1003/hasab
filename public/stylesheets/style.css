@@ -1,5 +1,7 @@
 .body {
   background-color: #f0f6fd;
+  font-family: 'Cairo', sans-serif;
+  font-family: 'Tajawal', sans-serif;
 }
 .header {
   text-align: center;
@@ -10,11 +12,10 @@
   justify-content: space-around !important;
   width: fit-content !important;
 }
-/* article {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(auto, 1fr));
-  gap: 10px;
-} */
+.no-v {
+  text-align: center;
+  color: blue;
+}
 .edit {
   text-decoration: none;
   color: black;
@@ -22,12 +23,27 @@
 .edit:hover {
   color: black;
 }
+article {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-color: white;
+  padding: 0px !important;
+}
+.v-heading {
+  text-align: center;
+}
+.card {
+  border-bottom: 1px solid black !important;
+  border-radius: 0px !important;
+}
 .card-body {
   display: grid !important;
-  grid-template-columns: repeat(7, minmax(auto, 1fr)) !important;
+  /* grid-template-columns: repeat(7, minmax(auto, 1fr)) !important; */
+  grid-template-columns: 300px 1fr 1fr 1fr 1fr 1fr 1fr !important;
   align-items: center !important;
   justify-items: center !important;
-  gap: 5px !important;
+  gap: 7px !important;
   padding: 5px !important;
   position: relative;
 }
@@ -40,6 +56,7 @@
 .text-muted {
   margin-bottom: 0px !important;
 }
+
 .count {
   position: absolute;
   top: 0;

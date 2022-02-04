@@ -1,22 +1,34 @@
-const { format } = require("date-fns");
+const { format } = require('date-fns');
 
-const Visit = require("./../models/visit");
+const Visit = require('./../models/visit');
 
 // serach method
+
 let search = async (req, res) => {
-  let dateNow = format(new Date(), "yyyy-mm-dd");
+  let dateNow = format(new Date(), 'yyyy-MM-dd');
   let query = { date: `${dateNow}` };
   let num = req.query.search;
   let date = req.query.searchDate;
+
   if (num) {
     query = { phoneNum1: `${num}` };
   } else if (date) {
     query = { date: `${date}` };
   }
-  await Visit.collection.find(query).toArray((err, data) => {
-    if (err) throw err;
-    res.render("index", { title: "Home visit", visits: data });
-  });
+
+  let sort = {
+    aria: 1,
+    chimist: 1,
+    time: 1,
+  };
+
+  await Visit.collection
+    .find(query)
+    .sort(sort)
+    .toArray((err, data) => {
+      if (err) throw err;
+      res.render('index', { visits: data, date: '22-2-2022' });
+    });
 };
 // end
 
@@ -25,8 +37,8 @@ let visitsPrint = async (req, res) => {
   let id = req.params.id;
   Visit.findById(id)
     .then((data) => {
-      res.render("visits/print", {
-        title: "Home visit visit page",
+      res.render('visits/print', {
+        title: 'Home visit visit page',
         visit: data,
       });
     })
@@ -58,20 +70,21 @@ let visitupdate = async (req, res) => {
       nots: req.body.nots,
       cost: req.body.cost,
       stat: req.body.stat,
+      aria: req.body.aria,
     }
   );
-  res.render("visits/print", { visit: visit });
+  res.render('visits/print', { visit: visit });
 };
 // end
 //new visit
 let newVisit = (req, res, next) => {
-  res.render("visits/new", { visit: new Visit() });
+  res.render('visits/new', { visit: new Visit() });
 };
 //end
 let visitEdit = async (req, res) => {
   let id = req.params.id;
   let visit = await Visit.findById(id);
-  res.render("visits/edit", { visit: visit });
+  res.render('visits/edit', { visit: visit });
 };
 
 //save the new visit to the db
@@ -94,10 +107,10 @@ let visitSave = async (req, res) => {
     nots: req.body.nots,
     cost: req.body.cost,
     stat: req.body.stat,
+    aria: req.body.aria,
   });
   try {
     await visit.save();
-    console.log(visit);
   } catch (error) {
     console.log(error);
   }

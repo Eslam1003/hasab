@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const visitSchema = new mongoose.Schema(
   {
@@ -43,7 +43,7 @@ const visitSchema = new mongoose.Schema(
       required: true,
     },
     time: {
-      type: String,
+      type: Number,
       required: true,
     },
     date: {
@@ -70,7 +70,11 @@ const visitSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    aria: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("Visit", visitSchema);
+module.exports = mongoose.model('Visit', visitSchema);
