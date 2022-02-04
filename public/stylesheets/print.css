@@ -1,5 +1,5 @@
 .body {
-  background-color: #f0f6fd;
+  background-color: #e2e8f0;
   font-family: 'Cairo', sans-serif;
   font-family: 'Tajawal', sans-serif;
 }
@@ -10,6 +10,7 @@
   border-right: 1px solid black !important;
   padding: 0px !important;
   position: relative;
+  background-color: white;
 }
 .container::after {
   content: '';

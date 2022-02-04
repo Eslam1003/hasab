@@ -1,5 +1,5 @@
 .body {
-  background-color: #f0f6fd;
+  background-color: #e2e8f0;
   font-family: 'Cairo', sans-serif;
   font-family: 'Tajawal', sans-serif;
 }
@@ -57,7 +57,7 @@ article {
   position: relative;
 }
 .card:hover {
-  background-color: #eee;
+  background-color: #f0f6fd;
 }
 .card-title {
   margin-bottom: 0px !important;
