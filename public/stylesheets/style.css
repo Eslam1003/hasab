@@ -6,6 +6,13 @@
 .header {
   text-align: center;
 }
+.hed {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+h4 {
+  font-size: 20px !important;
+}
 .nav {
   display: flex !important;
   align-items: center !important;
@@ -32,6 +39,8 @@ article {
 }
 .v-heading {
   text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .card {
   border-bottom: 1px solid black !important;
@@ -51,9 +60,6 @@ article {
   background-color: #eee;
 }
 .card-title {
-  margin-bottom: 0px !important;
-}
-.text-muted {
   margin-bottom: 0px !important;
 }
 
