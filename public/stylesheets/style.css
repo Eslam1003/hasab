@@ -13,6 +13,14 @@
 h4 {
   font-size: 20px !important;
 }
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hide {
+  display: none;
+}
 .nav {
   display: flex !important;
   align-items: center !important;
@@ -99,5 +107,18 @@ article {
   }
   .nav {
     display: none !important;
+  }
+  .hide {
+    display: block;
+  }
+  .container {
+    width: 100% !important;
+  }
+  .card-body {
+    grid-template-columns: 150px 1fr 1fr 1fr 1fr 1fr 1fr !important;
+    align-items: center !important;
+    justify-items: center !important;
+    gap: 7px !important;
+    padding: 5px !important;
   }
 }
