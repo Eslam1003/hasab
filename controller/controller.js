@@ -1,5 +1,5 @@
 const { format } = require('date-fns');
-
+const Chimist = require('../models/chimist');
 const Visit = require('./../models/visit');
 
 // serach method
@@ -27,7 +27,7 @@ let search = async (req, res) => {
     .sort(sort)
     .toArray((err, data) => {
       if (err) throw err;
-      res.render('index', { visits: data, date: '22-2-2022' });
+      res.render('index', { visits: data });
     });
 };
 // end
@@ -81,6 +81,32 @@ let newVisit = (req, res, next) => {
   res.render('visits/new', { visit: new Visit() });
 };
 //end
+// chimist
+
+let chimistNote = async (req, res, next) => {
+  let chimist = await Chimist.findById({ _id: '6200e8b1761c995598162413' });
+  res.render('visits/chimist', { chimist: chimist });
+};
+// end
+//  chimist save
+
+let chimistsave = async (req, res) => {
+  await Chimist.findByIdAndUpdate(
+    { _id: '6200e8b1761c995598162413' },
+    {
+      sa: req.body.sa,
+      su: req.body.su,
+      mo: req.body.mo,
+      tu: req.body.tu,
+      we: req.body.we,
+      th: req.body.th,
+      fr: req.body.fr,
+    }
+  );
+
+  res.redirect('/');
+};
+// end
 let visitEdit = async (req, res) => {
   let id = req.params.id;
   let visit = await Visit.findById(id);
@@ -124,4 +150,6 @@ module.exports = {
   visitSave,
   visitEdit,
   visitupdate,
+  chimistNote,
+  chimistsave,
 };

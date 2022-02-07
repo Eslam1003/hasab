@@ -23,6 +23,7 @@
       <h1 class="mb-4 mt-4">Home visit System</h1>
     </header>
     <nav class="container nav">
+      <a href="/visits/chimist" class="btn btn-primary m-4">chimist List</a>
       <a href="/visits/new" class="btn btn-primary m-4">New Visit</a>
       <form action="/" method="get" class="m-2">
         <button class="btn btn-primary" type="submit">Search</button>
@@ -35,7 +36,7 @@
     </nav>
     <article class="container-xl">
       <% if (visits.length ===0) { %>
-      <h6 class="no-v">لم يتم حجز اي زيارات</h6>
+      <h6 class="no-v">لا يوجد زيارات</h6>
       <% } else { %>
       <div class="hide">
         <div class="logo">
