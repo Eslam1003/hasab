@@ -19,26 +19,44 @@
     />
   </head>
   <body class="body">
-    <header class="container header">
-      <h1 class="mb-4 mt-4">Home visit System</h1>
-    </header>
-    <nav class="container nav">
-      <a href="/visits/chimist" class="btn btn-primary m-4">chimist List</a>
-      <a href="/visits/new" class="btn btn-primary m-4">New Visit</a>
-      <form action="/" method="get" class="m-2">
-        <button class="btn btn-primary" type="submit">Search</button>
-        <input type="text" class="search" name="search" required />
-      </form>
-      <form action="/" method="get" class="m-2 form-inline">
-        <button type="submit" class="btn btn-primary">Get</button>
-        <input type="date" name="searchDate" id="searchDate" />
-      </form>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 hide">
+      <div class="container-fluid">
+        <!-- Search input  -->
+        <form action="/" method="get" class="d-flex">
+          <input
+            type="text"
+            class="form-control me-2"
+            name="search"
+            placeholder="الاسم & الهاتف"
+            aria-label="Search"
+            required
+          />
+          <button class="btn btn-outline-info" type="submit">بحث</button>
+        </form>
+        <form action="/" method="get" class="d-flex">
+          <input
+            type="date"
+            name="searchDate"
+            id="searchDate"
+            class="form-control me-2"
+          />
+          <button type="submit" class="btn btn-outline-info">التاريخ</button>
+        </form>
+        <!-- serch end -->
+        <!-- link  -->
+        <a class="navbar-brand e" href="/">Home</a>
+        <a href="/visits/new" class="navbar-brand e">New Visit</a>
+        <a href="/visits/chimist" class="navbar-brand e">Chimist List</a>
+        <!-- link  -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+      </div>
     </nav>
+
     <article class="container-xl">
       <% if (visits.length ===0) { %>
       <h6 class="no-v">لا يوجد زيارات</h6>
       <% } else { %>
-      <div class="hide">
+      <div class="logo-cont">
         <div class="logo">
           <img src="/images/logo.png" alt="" />
           <p>testing Lorem ipsum dolor</p>

@@ -7,13 +7,20 @@ const Visit = require('./../models/visit');
 let search = async (req, res) => {
   let dateNow = format(new Date(), 'yyyy-MM-dd');
   let query = { date: `${dateNow}` };
-  let num = req.query.search;
+  if (req.query.search) {
+    if (req.query.search[0] === '0') {
+      var num = req.query.search;
+    } else {
+      var name = req.query.search;
+    }
+  }
   let date = req.query.searchDate;
-
   if (num) {
     query = { phoneNum1: `${num}` };
   } else if (date) {
     query = { date: `${date}` };
+  } else if (name) {
+    query = { name: `${name}` };
   }
 
   let sort = {
@@ -143,6 +150,7 @@ let visitSave = async (req, res) => {
   res.redirect(`visits/print/${visit._id}`);
 };
 //end
+
 module.exports = {
   search,
   visitsPrint,

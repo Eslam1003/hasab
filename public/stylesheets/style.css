@@ -98,7 +98,8 @@ article {
   border-radius: 50%;
   padding: 5px;
 }
-
+.hide {
+}
 .red {
   background-color: red !important;
 }
@@ -109,12 +110,10 @@ article {
   .header {
     display: none !important;
   }
-  .nav {
+  nav {
     display: none !important;
   }
-  .hide {
-    display: block;
-  }
+
   .container {
     width: 100% !important;
   }
