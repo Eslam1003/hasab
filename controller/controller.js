@@ -1,9 +1,7 @@
 const { format } = require('date-fns');
 const Chimist = require('../models/chimist');
 const Visit = require('./../models/visit');
-
 // serach method
-
 let search = async (req, res) => {
   let dateNow = format(new Date(), 'yyyy-MM-dd');
   let query = { date: `${dateNow}` };
@@ -57,7 +55,7 @@ let visitsPrint = async (req, res) => {
 // visit update
 let visitupdate = async (req, res) => {
   let id = req.params.id;
-  let visit = await Visit.findByIdAndUpdate(
+  await Visit.findByIdAndUpdate(
     { _id: id },
     {
       name: req.body.name,
@@ -80,6 +78,7 @@ let visitupdate = async (req, res) => {
       aria: req.body.aria,
     }
   );
+  let visit = await Visit.findById({ _id: id });
   res.render('visits/print', { visit: visit });
 };
 // end
@@ -150,6 +149,24 @@ let visitSave = async (req, res) => {
   res.redirect(`visits/print/${visit._id}`);
 };
 //end
+let analysis = (req, res) => {
+  res.render('visits/analysis', { visit: new Visit() });
+};
+let analysisSearch = (req, res) => {
+  let from = req.body.from;
+  let to = req.body.to;
+  Visit.collection
+    .find({
+      date: {
+        $gte: from,
+        $lte: to,
+      },
+    })
+    .toArray((err, data) => {
+      if (err) throw err;
+      res.render('visits/analysis', { visit: data });
+    });
+};
 
 module.exports = {
   search,
@@ -160,4 +177,6 @@ module.exports = {
   visitupdate,
   chimistNote,
   chimistsave,
+  analysis,
+  analysisSearch,
 };

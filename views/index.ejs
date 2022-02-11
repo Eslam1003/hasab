@@ -47,6 +47,7 @@
         <a class="navbar-brand e" href="/">Home</a>
         <a href="/visits/new" class="navbar-brand e">New Visit</a>
         <a href="/visits/chimist" class="navbar-brand e">Chimist List</a>
+        <a href="/visits/analysis" class="navbar-brand e">Visit analysis</a>
         <!-- link  -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
       </div>
@@ -80,7 +81,10 @@
             <h6 class="card-title"><%= visit.name %></h6>
             <p class="card-title"><%= visit.ragion %></p>
             <p class="card-title"><%= visit.phoneNum1 %></p>
-            <p class="card-title"><%= visit.time.slice(-9) %></p>
+            <% let time= '' %> <% if (visit.time.length===13) { %> <%
+            time=visit.time.slice(2) %> <% } else { %> <%
+            time=visit.time.slice(-9) %> <% } %>
+            <p class="card-title"><%= time %></p>
             <p class="card-title"><%= visit.date %></p>
             <p class="card-title"><%= visit.chimist %></p>
             <p class="card-title"><%= visit.cost %></p>

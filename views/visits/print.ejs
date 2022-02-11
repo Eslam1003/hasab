@@ -44,11 +44,16 @@
       </div>
       <div class="visit-row">
         <h6>توقيت الزياره</h6>
-        <p><%= visit.createdAt %></p>
+        <p><%= JSON.stringify(visit.createdAt).replace('T',' _ ').substring(1, 22) %></p>
       </div>
       <div class="visit-row">
         <h6>القيام بالزياره</h6>
-        <p> <h5>الساعة</h5>   <%=   visit.time %>  <h5>يوم</h5> <%= visit.date %></p>
+        
+
+         <% let time= '' %> <% if (visit.time.length===13) { %> <%
+            time=visit.time.slice(2) %> <% } else { %> <%
+            time=visit.time.slice(-9) %> <% } %>
+        <p> <h5>الساعة</h5>   <%=   time %>  <h5>يوم</h5> <%= visit.date %></p>
       </div>
       <div class="visit-row">
         <h6>متلقي الزياره</h6>
