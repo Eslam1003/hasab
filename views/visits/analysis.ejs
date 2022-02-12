@@ -48,15 +48,15 @@
     <div>
       <% let agami=0 %> <% let one=0 %> <% let two=0 %> <% let three=0 %> <% let
       four=0 %> <% let swap=0 %> <% let amount=0 %> <% let del=0 %> <% let
-      total=0 %> <% for( let i = 0; i < visit.length; i++ ) { %> <%
+      normal=0 %> <% for( let i = 0; i < visit.length; i++ ) { %> <%
       if(visit[i].aria==='0') { %> <% agami++ %> <% } %> <% if
       (visit[i].aria==='1') { %> <% one++ %> <% } %> <% if (visit[i].aria==='2')
       { %> <% two++ %> <% } %> <% if (visit[i].aria==='3') { %> <% three++ %> <%
       } %> <% if (visit[i].aria==='4') { %> <% four++ %> <% } %> <% if
       (visit[i].aria==='5') { %> <% swap++ %> <% } %> <% if
       (visit[i].stat==='red') { %> <% del++ %> <% } %> <% if
-      (visit[i].stat==='white') { %> <% total++ %> <% } %> <% amount=i+1 %> <% }
-      %>
+      (visit[i].stat==='white') { %> <% normal++ %> <% } %> <% amount=i+1 %> <%
+      } %> <% let total=amount-del %>
     </div>
     <div class="card">
       <h5 class="card-title">اجمالي عدد الزيارات : <%= amount %></h5>
