@@ -1,8 +1,9 @@
 const { format } = require('date-fns');
 const Chimist = require('../models/chimist');
 const Visit = require('./../models/visit');
+
 // serach method
-let search = async (req, res) => {
+let search = (req, res) => {
   let dateNow = format(new Date(), 'yyyy-MM-dd');
   let query = { date: `${dateNow}` };
   if (req.query.search) {
@@ -20,18 +21,52 @@ let search = async (req, res) => {
   } else if (name) {
     query = { name: `${name}` };
   }
+  // let timeSort = {
+  //   time: 1,
+  // };
 
   let sort = {
-    aria: 1,
     chimist: 1,
-    time: 1,
   };
-
-  await Visit.collection
+  var sorted = [];
+  Visit.collection
     .find(query)
     .sort(sort)
     .toArray((err, data) => {
       if (err) throw err;
+      // for (let i = 0; i < data.length; i++) {
+      //   if (data[i].chimist === 'علاء') {
+      //     sorted.push(data[i]);
+      //   }
+      // }
+      // for (let i = 0; i < data.length; i++) {
+      //   if (data[i].chimist.substring(0, 3) === 'عمر') {
+      //     sorted.push(data[i]);
+      //   }
+      // }
+
+      // for (let i = 0; i < data.length; i++) {
+      //   if (data[i].chimist.substring(0, 5) === 'السيد') {
+      //     sorted.push(data[i]);
+      //   }
+      // }
+
+      // for (let i = 0; i < data.length; i++) {
+      //   if (data[i].chimist.substring(0, 5) === 'محمود') {
+      //     sorted.push(data[i]);
+      //   }
+      // }
+      // for (let i = 0; i < data.length; i++) {
+      //   if (data[i].chimist.substring(1) === 'براهيم') {
+      //     sorted.push(data[i]);
+      //   }
+      // }
+      // for (let i = 0; i < data.length; i++) {
+      //   if (data[i].chimist.substring(0, 4) === 'بيتر') {
+      //     sorted.push(data[i]);
+      //   }
+      // }
+
       res.render('index', { visits: data });
     });
 };

@@ -68,31 +68,32 @@
         <h4 class="card-title">اسم العميل</h4>
         <h4 class="card-title">المنطقه</h4>
         <h4 class="card-title">رقم الهاتف</h4>
-        <h4 class="card-title">توقيت الزياره</h4>
+        <h4 class="card-title sort">توقيت الزياره</h4>
         <h4 class="card-title">تاريخ الزياره</h4>
         <h4 class="card-title">اسم الكميائي</h4>
         <h4 class="card-title">اجمالي التكلفه</h4>
       </div>
       <% visits.forEach((visit,i) =>{ %>
-      <div class="card container-xl <%= visit.stat %>">
-        <a href="/visits/print/<%= visit._id %> " class="edit">
-          <div class="card-body">
-            <span class="count"><%= i+1 %> </span>
-            <h6 class="card-title"><%= visit.name %></h6>
-            <p class="card-title"><%= visit.ragion %></p>
-            <p class="card-title"><%= visit.phoneNum1 %></p>
-            <% let time= '' %> <% if (visit.time.length===13) { %> <%
-            time=visit.time.slice(2) %> <% } else { %> <%
-            time=visit.time.slice(-9) %> <% } %>
-            <p class="card-title"><%= time %></p>
-            <p class="card-title"><%= visit.date %></p>
-            <p class="card-title"><%= visit.chimist %></p>
-            <p class="card-title"><%= visit.cost %></p>
-          </div>
-        </a>
-      </div>
-      <% }) %> <% } %>
+        <div class="card container-xl <%= visit.stat %>">
+          <a href="/visits/print/<%= visit._id %> " class="edit">
+            <div class="card-body">
+              <span class="count"><%= i+1 %> </span>
+              <h6 class="card-title"><%= visit.name %></h6>
+              <p class="card-title"><%= visit.ragion %></p>
+              <p class="card-title"><%= visit.phoneNum1 %></p>
+              <% let time= '' %> <% if (visit.time.length===13) { %> <%
+              time=visit.time.slice(2) %> <% } else { %> <%
+              time=visit.time.slice(-9) %> <% } %>
+              <p class="card-title"><%= time %></p>
+              <p class="card-title"><%= visit.date %></p>
+              <p class="card-title"><%= visit.chimist %></p>
+              <p class="card-title"><%= visit.cost %></p>
+            </div>
+          </a>
+        </div>
+        <% }) %> <% } %>
     </article>
+    <%= typeof visits %>
     <script src="/javascripts/main.js"></script>
   </body>
 </html>
