@@ -12,6 +12,7 @@ const {
   chimistsave,
   analysis,
   analysisSearch,
+  creatnew,
 } = require('./../controller/controller');
 
 /* app routes */
@@ -21,6 +22,7 @@ router.get('/visits/new', newVisit);
 router.get('/visits/chimist', chimistNote);
 router.get('/visits/analysis', analysis);
 router.get('/visits/edit/:id', visitEdit);
+router.get('/visits/newvisit/:id', creatnew);
 router.post('/visits/analysis', analysisSearch);
 router.post('/visits/edit/:id', visitupdate);
 router.post('/visits/chimist', chimistsave);

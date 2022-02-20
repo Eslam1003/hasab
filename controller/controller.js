@@ -31,18 +31,18 @@ let search = (req, res) => {
   let query = { date: `${dateNow}` };
   if (req.query.search) {
     if (req.query.search[0] === '0') {
-      var num = req.query.search;
+      var num =new RegExp( req.query.search);
     } else {
-      var name = req.query.search;
+      var name = new RegExp(req.query.search);
     }
   }
   let date = req.query.searchDate;
   if (num) {
-    query = { phoneNum1: `${num}` };
+    query = { phoneNum1:num};
   } else if (date) {
-    query = { date: `${date}` };
+    query = { date: date};
   } else if (name) {
-    query = { name: `//${name}//i` };
+    query = { name:name};
   }
 
   let sort = {
@@ -245,6 +245,11 @@ let visitEdit = async (req, res) => {
   let visit = await Visit.findById(id);
   res.render('visits/edit', { visit: visit });
 };
+let creatnew= async (req,res)=>{
+  let id =req.params.id;
+  let visit= await Visit.findById(id)
+  res.render('visits/newvisit',{visit:visit})
+}
 
 //save the new visit to the db
 let visitSave = async (req, res) => {
@@ -306,4 +311,5 @@ module.exports = {
   chimistsave,
   analysis,
   analysisSearch,
+  creatnew,
 };
