@@ -73,6 +73,7 @@ article {
 }
 .card-title {
   margin-bottom: 0px !important;
+  font-size: larger !important;
 }
 
 .count {
@@ -98,14 +99,20 @@ article {
   border-radius: 50%;
   padding: 5px;
 }
-.hide {
-}
+
 .red {
   background-color: red !important;
 }
 .yellow {
   background-color: yellow !important;
 }
+.pending{
+  background-color: aquamarine !important;
+}
+.none{
+  display: none !important;
+}
+
 @media print {
   .header {
     display: none !important;
@@ -124,4 +131,9 @@ article {
     gap: 7px !important;
     padding: 5px !important;
   }
+  .card-title {
+    margin-bottom: 0px !important;
+    font-size: medium !important;
+  }
+  
 }

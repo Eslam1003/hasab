@@ -2,6 +2,29 @@ const { format } = require('date-fns');
 const Chimist = require('../models/chimist');
 const Visit = require('./../models/visit');
 
+let alaa = [];
+let omar = [];
+let elsayedatya = [];
+let elsayedAhmed = [];
+let mahmoud = [];
+let ibrahem = [];
+let mohamed = [];
+let petr = [];
+let mostafa = [];
+let fadi = [];
+let kero = [];
+let abdo = [];
+let nglaa = [];
+let nesma = [];
+let other = [];
+let listOfChimist = {};
+var agmie = [];
+let areaone = [];
+let areatwo = [];
+let areathree = [];
+let areafour = [];
+let swaps = [];
+
 // serach method
 let search = (req, res) => {
   let dateNow = format(new Date(), 'yyyy-MM-dd');
@@ -19,55 +42,124 @@ let search = (req, res) => {
   } else if (date) {
     query = { date: `${date}` };
   } else if (name) {
-    query = { name: `${name}` };
+    query = { name: `//${name}//i` };
   }
-  // let timeSort = {
-  //   time: 1,
-  // };
 
   let sort = {
-    chimist: 1,
+    time: 1,
   };
-  var sorted = [];
+
   Visit.collection
     .find(query)
     .sort(sort)
     .toArray((err, data) => {
       if (err) throw err;
-      // for (let i = 0; i < data.length; i++) {
-      //   if (data[i].chimist === 'علاء') {
-      //     sorted.push(data[i]);
-      //   }
-      // }
-      // for (let i = 0; i < data.length; i++) {
-      //   if (data[i].chimist.substring(0, 3) === 'عمر') {
-      //     sorted.push(data[i]);
-      //   }
-      // }
+      alaa = data.filter((e) => {
+        return e.chimist === 'علاء عبد النعيم';
+      });
+      ibrahem = data.filter((e) => {
+        return e.chimist === 'إبراهيم أحمد';
+      });
+      elsayedAhmed = data.filter((e) => {
+        return e.chimist === 'السيد احمد';
+      });
+      petr = data.filter((e) => {
+        return e.chimist === 'بيتر وليم';
+      });
+      abdo = data.filter((e) => {
+        return e.chimist === 'عبده محمود';
+      });
+      kero = data.filter((e) => {
+        return e.chimist === 'كيرلس جاب الله';
+      });
+      elsayedatya = data.filter((e) => {
+        return e.chimist === 'السيد عطية';
+      });
+      mahmoud = data.filter((e) => {
+        return e.chimist === 'محمود السيد';
+      });
+      nglaa = data.filter((e) => {
+        return e.chimist === 'نجلاء';
+      });
+      nesma = data.filter((e) => {
+        return e.chimist === 'نسمة';
+      });
+      omar = data.filter((e) => {
+        return e.chimist === 'عمر يوسف';
+      });
+      mostafa = data.filter((e) => {
+        return e.chimist === 'مصطفي فوزي';
+      });
+      mohamed = data.filter((e) => {
+        return e.chimist === 'محمد يوسف';
+      });
+      fadi = data.filter((e) => {
+        return e.chimist === 'فادي صبري';
+      });
+      other = data.filter((e) => {
+        return e.chimist === '-_-';
+      });
+      listOfChimist = {
+        'alaa': alaa,
+        'omar': omar,
+        'elsayedatya': elsayedatya,
+        'elsayedAhmed': elsayedAhmed,
+        'mahmoud': mahmoud,
+        'mohamed': mohamed,
+        'ibrahem': ibrahem,
+        'petr': petr,
+        'mostafa': mostafa,
+        'fadi': fadi,
+        'kero': kero,
+        'abdo': abdo,
+        'nglaa': nglaa,
+        'nesma': nesma,
+        'other': other,
+      };
+      agmie.length=0;
+      areaone.length=0;
+      areatwo.length=0;
+      areathree.length=0;
+      areafour.length=0;
+      swaps.length=0;
+      Object.keys(listOfChimist).forEach((e) => {
+        if (listOfChimist[e][0]) {
+          if (listOfChimist[e][0].aria === '0') {
+            agmie.push(listOfChimist[e]);
+            
+          }
+          else if (listOfChimist[e][0].aria === '1') {
+            areaone.push(listOfChimist[e]);
+            
+          }
+          else if (listOfChimist[e][0].aria === '2') {
+            areatwo.push(listOfChimist[e]);
+            
+          }
+          else if (listOfChimist[e][0].aria === '3') {
+            areathree.push(listOfChimist[e]);
+            
+          }
+          else if (listOfChimist[e][0].aria === '4') {
+            areafour.push(listOfChimist[e]);
+            
+          }
+          else if (listOfChimist[e][0].aria === '5') {
+            swaps.push(listOfChimist[e]);
+            
+          }
+        }
+      });
 
-      // for (let i = 0; i < data.length; i++) {
-      //   if (data[i].chimist.substring(0, 5) === 'السيد') {
-      //     sorted.push(data[i]);
-      //   }
-      // }
-
-      // for (let i = 0; i < data.length; i++) {
-      //   if (data[i].chimist.substring(0, 5) === 'محمود') {
-      //     sorted.push(data[i]);
-      //   }
-      // }
-      // for (let i = 0; i < data.length; i++) {
-      //   if (data[i].chimist.substring(1) === 'براهيم') {
-      //     sorted.push(data[i]);
-      //   }
-      // }
-      // for (let i = 0; i < data.length; i++) {
-      //   if (data[i].chimist.substring(0, 4) === 'بيتر') {
-      //     sorted.push(data[i]);
-      //   }
-      // }
-
-      res.render('index', { visits: data });
+      res.render('index', {
+        visits: data,
+        agmie: agmie,
+        areaone: areaone,
+        areatwo: areatwo,
+        areathree: areathree,
+        areafour: areafour,
+        swaps: swaps,
+      });
     });
 };
 // end
