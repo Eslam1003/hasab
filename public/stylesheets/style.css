@@ -73,7 +73,7 @@ article {
 }
 .card-title {
   margin-bottom: 0px !important;
-  font-size: larger !important;
+  font-size: medium !important;
 }
 
 .count {
@@ -106,10 +106,10 @@ article {
 .yellow {
   background-color: yellow !important;
 }
-.pending{
+.pending {
   background-color: aquamarine !important;
 }
-.none{
+.none {
   display: none !important;
 }
 
@@ -135,5 +135,8 @@ article {
     margin-bottom: 0px !important;
     font-size: medium !important;
   }
-  
+  @page {
+    size: auto;
+    margin: 0;
+  }
 }
