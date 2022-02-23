@@ -8,8 +8,8 @@ var indexRouter = require('./routes/index');
 
 mongoose
   .connect(
-    // 'mongodb+srv://eslam:mohamed_1993@cluster0.jl2e4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-    'mongodb://localhost/visit'
+    'mongodb+srv://eslam:mohamed_1993@cluster0.jl2e4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    // 'mongodb://localhost/visit'
   )
   .then((result) => {
     console.log('connected to db');
