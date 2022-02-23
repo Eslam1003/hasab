@@ -1,4 +1,5 @@
 const { format } = require('date-fns');
+
 const Chimist = require('../models/chimist');
 const Visit = require('./../models/visit');
 
@@ -24,25 +25,26 @@ let areatwo = [];
 let areathree = [];
 let areafour = [];
 let swaps = [];
-
+let del = 0;
+let incall = 0;
 // serach method
 let search = (req, res) => {
   let dateNow = format(new Date(), 'yyyy-MM-dd');
   let query = { date: `${dateNow}` };
   if (req.query.search) {
     if (req.query.search[0] === '0') {
-      var num =new RegExp( req.query.search);
+      var num = new RegExp(req.query.search);
     } else {
       var name = new RegExp(req.query.search);
     }
   }
   let date = req.query.searchDate;
   if (num) {
-    query = { phoneNum1:num};
+    query = { phoneNum1: num };
   } else if (date) {
-    query = { date: date};
+    query = { date: date };
   } else if (name) {
-    query = { name:name};
+    query = { name: name };
   }
 
   let sort = {
@@ -100,53 +102,42 @@ let search = (req, res) => {
         return e.chimist === '-_-';
       });
       listOfChimist = {
-        'alaa': alaa,
-        'omar': omar,
-        'elsayedatya': elsayedatya,
-        'elsayedAhmed': elsayedAhmed,
-        'mahmoud': mahmoud,
-        'mohamed': mohamed,
-        'ibrahem': ibrahem,
-        'petr': petr,
-        'mostafa': mostafa,
-        'fadi': fadi,
-        'kero': kero,
-        'abdo': abdo,
-        'nglaa': nglaa,
-        'nesma': nesma,
-        'other': other,
+        alaa: alaa,
+        omar: omar,
+        elsayedatya: elsayedatya,
+        elsayedAhmed: elsayedAhmed,
+        mahmoud: mahmoud,
+        mohamed: mohamed,
+        ibrahem: ibrahem,
+        petr: petr,
+        mostafa: mostafa,
+        fadi: fadi,
+        kero: kero,
+        abdo: abdo,
+        nglaa: nglaa,
+        nesma: nesma,
+        other: other,
       };
-      agmie.length=0;
-      areaone.length=0;
-      areatwo.length=0;
-      areathree.length=0;
-      areafour.length=0;
-      swaps.length=0;
+      agmie.length = 0;
+      areaone.length = 0;
+      areatwo.length = 0;
+      areathree.length = 0;
+      areafour.length = 0;
+      swaps.length = 0;
       Object.keys(listOfChimist).forEach((e) => {
         if (listOfChimist[e][0]) {
           if (listOfChimist[e][0].aria === '0') {
             agmie.push(listOfChimist[e]);
-            
-          }
-          else if (listOfChimist[e][0].aria === '1') {
+          } else if (listOfChimist[e][0].aria === '1') {
             areaone.push(listOfChimist[e]);
-            
-          }
-          else if (listOfChimist[e][0].aria === '2') {
+          } else if (listOfChimist[e][0].aria === '2') {
             areatwo.push(listOfChimist[e]);
-            
-          }
-          else if (listOfChimist[e][0].aria === '3') {
+          } else if (listOfChimist[e][0].aria === '3') {
             areathree.push(listOfChimist[e]);
-            
-          }
-          else if (listOfChimist[e][0].aria === '4') {
+          } else if (listOfChimist[e][0].aria === '4') {
             areafour.push(listOfChimist[e]);
-            
-          }
-          else if (listOfChimist[e][0].aria === '5') {
+          } else if (listOfChimist[e][0].aria === '5') {
             swaps.push(listOfChimist[e]);
-            
           }
         }
       });
@@ -159,6 +150,8 @@ let search = (req, res) => {
         areathree: areathree,
         areafour: areafour,
         swaps: swaps,
+        del: del,
+        incall: incall,
       });
     });
 };
@@ -245,11 +238,11 @@ let visitEdit = async (req, res) => {
   let visit = await Visit.findById(id);
   res.render('visits/edit', { visit: visit });
 };
-let creatnew= async (req,res)=>{
-  let id =req.params.id;
-  let visit= await Visit.findById(id)
-  res.render('visits/newvisit',{visit:visit})
-}
+let creatnew = async (req, res) => {
+  let id = req.params.id;
+  let visit = await Visit.findById(id);
+  res.render('visits/newvisit', { visit: visit });
+};
 
 //save the new visit to the db
 let visitSave = async (req, res) => {
@@ -281,12 +274,45 @@ let visitSave = async (req, res) => {
   res.redirect(`visits/print/${visit._id}`);
 };
 //end
+let deleteVisit = (req, res) => {
+  let id = req.params.id;
+  Visit.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: '/' });
+    })
+    .catch((e) => console.log(e));
+};
+
+let d = 0;
+let doneVisit = 0;
+let total = 0;
+let agami = 0;
+let one = 0;
+let tow = 0;
+let three = 0;
+let four = 0;
+let swap = 0;
+let delet = [];
+
 let analysis = (req, res) => {
-  res.render('visits/analysis', { visit: new Visit() });
+  res.render('visits/analysis', {
+    total: total,
+    d: d,
+    doneVisit: doneVisit,
+    agami: agami,
+    one: one,
+    tow: tow,
+    three: three,
+    four: four,
+    swap: swap,
+    delet: delet,
+    total: total,
+  });
 };
 let analysisSearch = (req, res) => {
   let from = req.body.from;
   let to = req.body.to;
+
   Visit.collection
     .find({
       date: {
@@ -296,7 +322,64 @@ let analysisSearch = (req, res) => {
     })
     .toArray((err, data) => {
       if (err) throw err;
-      res.render('visits/analysis', { visit: data });
+      data.forEach((e) => {
+        if (e.stat === 'red') {
+          d++;
+          delet.push(e);
+        } else if (e.stat === 'white' || e.stat === 'yellow') {
+          doneVisit++;
+        }
+      });
+      data.forEach((e) => {
+        switch (e.aria) {
+          case '0':
+            agami++;
+            break;
+          case '1':
+            one++;
+            break;
+          case '2':
+            tow++;
+            break;
+          case '3':
+            three++;
+            break;
+          case '4':
+            four++;
+            break;
+          case '5':
+            swap++;
+            break;
+
+          default:
+            break;
+        }
+      });
+      total = data.length;
+      res.render('visits/analysis', {
+        visit: data,
+        total: total,
+        d: d,
+        doneVisit: doneVisit,
+        agami: agami,
+        one: one,
+        tow: tow,
+        three: three,
+        four: four,
+        swap: swap,
+        delet: delet,
+        total: total,
+      });
+      d = 0;
+      doneVisit = 0;
+      total = 0;
+      agami = 0;
+      one = 0;
+      tow = 0;
+      three = 0;
+      four = 0;
+      swap = 0;
+      delet = [];
     });
 };
 
@@ -312,4 +395,5 @@ module.exports = {
   analysis,
   analysisSearch,
   creatnew,
+  deleteVisit,
 };

@@ -73,9 +73,23 @@
       </div>
     </div>
     <div class="buuton">
+      <a href="/" class="btn btn-success">Home</a>
       <a href="/visits/edit/<%= visit.id %> " class="btn btn-success">edit</a>
       <a href="/visits/newvisit/<%= visit.id %> " class="btn btn-success">New Visit</a>
-      <a href="/" class="btn btn-success">Home</a>
+      <a class="btn btn-danger delet" data-doc="<%= visit.id %>">Delete Visit</a>
     </div>
   </body>
+  <script>
+    let delet =document.querySelector('a.delet')
+    delet.addEventListener("click",(e)=>{
+      const rout=`/visits/print/${delet.dataset.doc}`
+      fetch(rout,{
+        method:'DELETE'
+      })
+      .then(respuns=>respuns.json())
+      .then(data=>console.log(window.location.href=data.redirect))
+      .catch(err=>console.log(err))
+      
+    })
+  </script>
 </html>

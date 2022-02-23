@@ -13,11 +13,13 @@ const {
   analysis,
   analysisSearch,
   creatnew,
+  deleteVisit,
 } = require('./../controller/controller');
 
 /* app routes */
 router.get('/', search);
 router.get('/visits/print/:id', visitsPrint);
+router.delete('/visits/print/:id', deleteVisit);
 router.get('/visits/new', newVisit);
 router.get('/visits/chimist', chimistNote);
 router.get('/visits/analysis', analysis);
