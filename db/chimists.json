@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "6200e8b1761c995598162413"
+  },
+  "sa": "عمر   ",
+  "su": "eslam    ",
+  "mo": "eslam    ",
+  "tu": "eslam    ",
+  "we": "esalm    ",
+  "th": "esalam    ",
+  "fr": "eslam    ",
+  "createdAt": {
+    "$date": "2022-02-07T09:38:57.456Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-23T17:33:56.414Z"
+  },
+  "__v": 0
+}]
